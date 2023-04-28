@@ -34,8 +34,30 @@ export default function Home() {
   }
 
   async function withdrawFunds() {
-    const SpiralContract = new Contract(spiralAddress, sprialABI, library.getSigner());
-    console.log(await SpiralContract.withdrawFunds());
+    const SpiralContract = new Contract(
+      spiralAddress,
+      sprialABI,
+      library.getSigner()
+    );
+    await SpiralContract.withdrawFunds();
+  }
+
+  async function withdrawUnsoldSPIRAL() {
+    const SpiralContract = new Contract(
+      spiralAddress,
+      sprialABI,
+      library.getSigner()
+    );
+    await SpiralContract.withdrawUnsoldSPIRAL();
+  }
+
+  async function withdrawAllSPIRAL() {
+    const SpiralContract = new Contract(
+      spiralAddress,
+      sprialABI,
+      library.getSigner()
+    );
+    await SpiralContract.withdrawAllSPIRAL();
   }
 
   useEffect(() => {
@@ -122,11 +144,26 @@ export default function Home() {
         ) : (
           <span>Not connected</span>
         )}
+      </div>
+      <div className="flex flex-row gap-3 items-center justify-center">
         <button
           onClick={withdrawFunds}
           className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800"
         >
           Withdraw Funds
+        </button>
+
+        <button
+          onClick={withdrawUnsoldSPIRAL}
+          className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800"
+        >
+          withdrawUnsoldSPIRAL
+        </button>
+        <button
+          onClick={withdrawAllSPIRAL}
+          className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800"
+        >
+          withdrawAllSPIRAL
         </button>
       </div>
     </>
